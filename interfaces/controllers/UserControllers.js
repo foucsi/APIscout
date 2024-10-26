@@ -1,6 +1,3 @@
-const express = require('express');
-const router = express.Router();
-
 // controllers/UserController.js
 exports.getAllUsers = (req, res) => {
     // Logic to get all users
