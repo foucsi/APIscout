@@ -1,7 +1,5 @@
 # APIscout
 
-# API Scout
-
 **API Scout** is a platform designed to automate API documentation, testing, and monitoring for developers. It centralizes the management of API schemas, tracks versions, and offers real-time monitoring, all in one place. API Scout aims to simplify the workflow of developers and teams by providing a comprehensive tool for managing APIs efficiently.
 
 ## Features
@@ -24,7 +22,7 @@
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/api-scout.git
+   git clone https://github.com/foucsi/api-scout.git
 Navigate to the project directory:
 bash
 Copier le code
@@ -64,4 +62,4 @@ License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 Contact
-For questions or suggestions, please contact [your-email@example.com].
+For questions or suggestions, please contact julienfoucart@proton.me.
