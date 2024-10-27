@@ -38,7 +38,7 @@ const EndpointSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   }
-});
+}, {timestamps: true});
 
 const EndpointModel = mongoose.model('Endpoint', EndpointSchema);
 
