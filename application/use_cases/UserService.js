@@ -2,6 +2,7 @@
 const UserModel = require('../../infrastructure/database/models/UserModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { v4: uuidv4 } = require('uuid');
 
 //Objectif : Contient la logique métier de création d’un utilisateur en utilisant Mongoose.
 
@@ -27,6 +28,7 @@ const createUser = async ({ username, email, password }) => {
     username,
     email,
     password: hashedPassword,
+    uniqueId:uuidv4()
   });
 
   await user.save();
