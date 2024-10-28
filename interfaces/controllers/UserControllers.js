@@ -31,6 +31,13 @@ exports.getAllUsers = (req, res) => {
     res.send(`Delete user with id ${userId}`);
   };
 
+  // Objectif : Gérer la logique de création d’un utilisateur en utilisant le modèle Mongoose.
+  /*
+  Ce que Nous Faisons :
+    Le contrôleur reçoit les données de la requête et appelle le service pour créer un utilisateur.
+    Il envoie ensuite une réponse JSON avec les détails de l’utilisateur créé, sans inclure le mot de passe.
+  */
+
   exports.createUser = async (req, res) => {
     try {
       // Récupération des données du corps de la requête
