@@ -53,6 +53,7 @@ exports.getAllUsers = (req, res) => {
           id: newUser._id,
           username: newUser.username,
           email: newUser.email,
+          uniqueId: newUser.uniqueId
         }
       });
     } catch (error) {
