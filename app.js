@@ -2,6 +2,7 @@ require('dotenv').config();
 require('./infrastructure/database/mongoConnection');
 
 const express = require('express');
+const morgan = require('morgan');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -11,6 +12,7 @@ const usersRouter = require('./interfaces/http/routes/users');
 
 const app = express();
 
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -18,6 +20,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use(morgan('combined'));
 app.use('/users', usersRouter);
 
 module.exports = app;
