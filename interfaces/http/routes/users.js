@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 const UserController = require('../../controllers/UserControllers');
-const validationMiddleware = require('../../infrastructure/middlewares/validationMiddleware');
-const userSchema = require('../../infrastructure/database/models/UserModel');
+const validationMiddleware = require('../../../infrastructure/middlewares/validationMiddleware');
+const userSchema = require('../../../infrastructure/database/models/UserModel');
 
 router.get('/', UserController.getAllUsers);
 router.get('/:id', UserController.getUserById);
