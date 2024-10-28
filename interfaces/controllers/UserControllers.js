@@ -29,12 +29,12 @@ exports.getAllUsers = (req, res) => {
     res.send(`Delete user with id ${userId}`);
   };
 
-  exports.registerUser = (req, res) => {
+  exports.createUser = (req, res) => {
 
   }
 
   exports.loginUser = (req, res) => {
-    
+
   }
   
   

@@ -39,7 +39,7 @@ app.use(corsMiddleware);
 
 // Routes publiques
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api/users', usersRouter);
 app.use('/api/public', publicRoutes);
 
 // Routes protégées par le middleware d'authentification

@@ -18,14 +18,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  firstName: {
-    type: String,
-    trim: true
-  },
-  lastName: {
-    type: String,
-    trim: true
-  },
   isActive: {
     type: Boolean,
     default: true
