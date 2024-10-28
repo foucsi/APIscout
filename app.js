@@ -11,7 +11,6 @@ const cookieParser = require('cookie-parser');
 
 // Middlewares
 const corsMiddleware = require('./infrastructure/middlewares/corsMiddleware');
-const validationMiddleware = require('./infrastructure/middlewares/validationMiddleware');
 const errorMiddleware = require('./infrastructure/middlewares/errorMiddleware');
 const requestLogger = require('./infrastructure/middlewares/requestLogger');
 
@@ -45,8 +44,6 @@ app.use('/api/public', publicRoutes);
 // Routes protégées par le middleware d'authentification
 app.use('/api/protected', authMiddleware, protectedRoutes);
 
-// Middleware de validation (exemple générique, à adapter par route)
-app.use(validationMiddleware);
 
 // Middleware de gestion des erreurs (doit être placé après toutes les routes)
 app.use(errorMiddleware);

@@ -61,9 +61,27 @@ exports.getAllUsers = (req, res) => {
     }
   };
 
-  exports.loginUser = (req, res) => {
-
-  }
+  exports.loginUser = async (req, res) => {
+    try {
+      const { email, password } = req.body;
+  
+      // Appel au service pour authentifier l'utilisateur
+      const { token, user } = await UserService.authenticateUser(email, password);
+  
+      // Réponse avec le token et les informations de base de l'utilisateur
+      res.status(200).json({
+        message: 'Login successful',
+        token,
+        user: {
+          id: user._id,
+          email: user.email,
+          username: user.username,
+        },
+      });
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  };
   
   
 
