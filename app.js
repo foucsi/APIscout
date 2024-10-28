@@ -1,26 +1,54 @@
+// Charger les variables d'environnement
 require('dotenv').config();
+
+// Connexion à la base de données
 require('./infrastructure/database/mongoConnection');
 
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const logger = require('morgan');
 
+// Middlewares
+const corsMiddleware = require('./infrastructure/middlewares/corsMiddleware');
+const validationMiddleware = require('./infrastructure/middlewares/validationMiddleware');
+const errorMiddleware = require('./infrastructure/middlewares/errorMiddleware');
+const requestLogger = require('./infrastructure/middlewares/requestLogger');
+
+// Import des routes
 const indexRouter = require('./interfaces/http/routes/index');
 const usersRouter = require('./interfaces/http/routes/users');
+const protectedRoutes = require('./interfaces/http/routes/protected');
+const publicRoutes = require('./interfaces/http/routes/public');
+const authMiddleware = require('./infrastructure/middlewares/authMiddleware');
 
 const app = express();
 
+// Utilisation des middlewares globaux
+app.use(morgan('combined')); // Logger des requêtes HTTP
+app.use(express.json()); // Parseur JSON
+app.use(express.urlencoded({ extended: false })); // Parseur d'URL-encoded
+app.use(cookieParser()); // Parseur de cookies
+app.use(express.static(path.join(__dirname, 'public'))); // Fichiers statiques
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// Logger des requêtes (personnalisé)
+app.use(requestLogger);
 
+// Gestion du CORS
+app.use(corsMiddleware);
+
+// Routes publiques
 app.use('/', indexRouter);
-app.use(morgan('combined'));
 app.use('/users', usersRouter);
+app.use('/api/public', publicRoutes);
+
+// Routes protégées par le middleware d'authentification
+app.use('/api/protected', authMiddleware, protectedRoutes);
+
+// Middleware de validation (exemple générique, à adapter par route)
+app.use(validationMiddleware);
+
+// Middleware de gestion des erreurs (doit être placé après toutes les routes)
+app.use(errorMiddleware);
 
 module.exports = app;
