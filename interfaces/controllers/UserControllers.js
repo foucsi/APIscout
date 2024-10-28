@@ -28,6 +28,15 @@ exports.getAllUsers = (req, res) => {
     // Logic to delete user
     res.send(`Delete user with id ${userId}`);
   };
+
+  exports.registerUser = (req, res) => {
+
+  }
+
+  exports.loginUser = (req, res) => {
+    
+  }
+  
   
 
 
