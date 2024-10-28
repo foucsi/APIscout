@@ -33,9 +33,6 @@ const createUser = async ({ username, email, password }) => {
   return user;
 };
 
-module.exports = {
-  createUser,
-};
 
 
 const authenticateUser = async (email, password) => {
@@ -63,4 +60,5 @@ const authenticateUser = async (email, password) => {
 
 module.exports = {
   authenticateUser,
+  createUser
 };
