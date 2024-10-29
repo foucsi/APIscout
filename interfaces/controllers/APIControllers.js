@@ -4,21 +4,24 @@ const APIService = require('../../application/use_cases/APIService')
 // controllers/APIController.js
 exports.createAPI = async (req, res) => {
   try {
-    const { name, description, version, baseUrl, owner, endpoints, isPublic, status } = req.body;
+    const { name, description, version, baseUrl, endpoints, isPublic, status } = req.body;
+    
+    // Récupérer l'ID de l'utilisateur authentifié depuis req.user.id pour l'utiliser comme owner
+    const owner = req.user.id;
 
-    // Appeler le service pour créer l'API avec vérification des clés étrangères
-    const newAPI = await ApiService.createAPI({
+    // Appeler le use case avec owner et les autres paramètres
+    const newAPI = await ApiService.createApi({
       name,
       description,
       version,
       baseUrl,
-      owner,
+      owner, // Ici, owner est défini par req.user.id
       endpoints,
       isPublic,
       status,
     });
 
-    // Renvoyer la réponse avec le nouvel API
+    // Répondre avec la nouvelle API créée
     res.status(201).json({
       message: 'API created successfully',
       api: newAPI,
