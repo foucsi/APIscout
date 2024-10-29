@@ -1,7 +1,31 @@
+const APIService = require('../../application/use_cases/APIService')
+
+
 // controllers/APIController.js
-exports.getAllAPIs = (req, res) => {
-  // Logic to get all APIs
-  res.send('Get all APIs');
+exports.createAPI = async (req, res) => {
+  try {
+    const { name, description, version, baseUrl, owner, endpoints, isPublic, status } = req.body;
+
+    // Appeler le service pour créer l'API avec vérification des clés étrangères
+    const newAPI = await ApiService.createAPI({
+      name,
+      description,
+      version,
+      baseUrl,
+      owner,
+      endpoints,
+      isPublic,
+      status,
+    });
+
+    // Renvoyer la réponse avec le nouvel API
+    res.status(201).json({
+      message: 'API created successfully',
+      api: newAPI,
+    });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
 };
 
 exports.getAPIById = (req, res) => {
