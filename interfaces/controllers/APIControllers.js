@@ -10,7 +10,7 @@ exports.createAPI = async (req, res) => {
     const owner = req.user.id;
 
     // Appeler le use case avec owner et les autres paramètres
-    const newAPI = await ApiService.createApi({
+    const newAPI = await APIService.createApi({
       name,
       description,
       version,
