@@ -17,6 +17,7 @@ const requestLogger = require('./infrastructure/middlewares/requestLogger');
 // Import des routes
 const indexRouter = require('./interfaces/http/routes/index');
 const usersRouter = require('./interfaces/http/routes/users');
+const apisRouter = require('./interfaces/http/routes/api')
 const protectedRoutes = require('./interfaces/http/routes/protected');
 const publicRoutes = require('./interfaces/http/routes/public');
 const authMiddleware = require('./infrastructure/middlewares/authMiddleware');
@@ -39,6 +40,7 @@ app.use(corsMiddleware);
 // Routes publiques
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
+app.use('/api', apisRouter)
 app.use('/api/public', publicRoutes);
 
 // Routes protégées par le middleware d'authentification

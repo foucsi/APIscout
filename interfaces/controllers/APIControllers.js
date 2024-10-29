@@ -31,16 +31,19 @@ exports.createAPI = async (req, res) => {
   }
 };
 
+exports.getAllAPIs = async (req, res) => {
+  try {
+    const apis = await APIModel.find(); // Récupère toutes les APIs
+    res.status(200).json(apis);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 exports.getAPIById = (req, res) => {
   const apiId = req.params.id;
   // Logic to get API by id
   res.send(`Get API with id ${apiId}`);
-};
-
-exports.createAPI = (req, res) => {
-  const apiData = req.body;
-  // Logic to create a new API
-  res.send('Create a new API');
 };
 
 exports.updateAPI = (req, res) => {
