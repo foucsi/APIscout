@@ -43,9 +43,6 @@ const APISchema = new mongoose.Schema({
   timestamps: true // This will add createdAt and updatedAt fields automatically
 });
 
-// Add indexes for better query performance
-APISchema.index({ name: 1, owner: 1 }, { unique: true });
-APISchema.index({ status: 1 });
 
 const APIModel = mongoose.model('API', APISchema);
 
