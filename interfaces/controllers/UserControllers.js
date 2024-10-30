@@ -2,8 +2,11 @@ const UserService = require('../../application/use_cases/UserService');
 
 // controllers/UserController.js
 exports.getAllUsers = (req, res) => {
-    // Logic to get all users
-    res.send('Get all users');
+    try{
+
+    }catch(error){
+      res.status(500).json({message: error.message})
+    }
   };
   
   exports.getUserById = (req, res) => {
