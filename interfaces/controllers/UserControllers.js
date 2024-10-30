@@ -3,7 +3,7 @@ const UserService = require('../../application/use_cases/UserService');
 // controllers/UserController.js
 exports.getAllUsers = async(req, res) => {
     try{
-      const users = await UserService.find()
+      const users = await UserService.getAll()
       res.status(200).json(users)
     }catch(error){
       res.status(500).json({message: error.message})

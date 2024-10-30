@@ -3,6 +3,7 @@ const UserModel = require('../../infrastructure/database/models/UserModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid');
+const User = require('../../infrastructure/database/models/UserModel');
 
 //Objectif : Contient la logique métier de création d’un utilisateur en utilisant Mongoose.
 
@@ -60,7 +61,16 @@ const authenticateUser = async (email, password) => {
   return { token, user };
 };
 
+const getAll = async()=>{
+  const users = await User.find()
+  if(users.length === 0){
+    throw new Error ("Database empty")
+  }
+  return users
+}
+
 module.exports = {
   authenticateUser,
-  createUser
+  createUser,
+  getAll
 };
