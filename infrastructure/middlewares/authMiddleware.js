@@ -7,21 +7,21 @@ Il utilise des tokens JWT ou d’autres mécanismes de session pour vérifier l'
 
 // src/infrastructure/middlewares/authMiddleware.js
 const jwt = require('jsonwebtoken');
-const {JWT_SECRET} = process.env
+const { JWT_SECRET } = process.env;
 
-const authMiddleware = (req, res, next) => {
+const authMiddleware = async (req, res, next) => {
   const token = req.header('Authorization')?.split(' ')[1];
 
   if (!token) {
-    return res.status(401).json({ message: 'Access denied. No token provided.' });
+    return res.status(401).json({ message: 'Accès refusé. Aucun jeton fourni.' });
   }
 
   try {
-    const decoded = jwt.verify(token, JWT_SECRET);
-    req.user = decoded; // Attache l'utilisateur décodé à la requête
+    const decoded = await jwt.verify(token, JWT_SECRET);
+    req.user = decoded;
     next();
   } catch (err) {
-    res.status(400).json({ message: 'Invalid token.' });
+    res.status(400).json({ message: 'Jeton non valide.' });
   }
 };
 
