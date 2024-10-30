@@ -2,7 +2,7 @@
 const cors = require('cors');
 
 const corsMiddleware = cors({
-  origin: '*', // Tu peux spécifier des domaines autorisés ici
+  origin: '*', 
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 });
