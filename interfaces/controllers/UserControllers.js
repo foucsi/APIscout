@@ -1,9 +1,9 @@
 const UserService = require('../../application/use_cases/UserService');
 
 // controllers/UserController.js
-exports.getAllUsers = (req, res) => {
+exports.getAllUsers = async(req, res) => {
     try{
-
+      const users = await UserService.find()
     }catch(error){
       res.status(500).json({message: error.message})
     }
