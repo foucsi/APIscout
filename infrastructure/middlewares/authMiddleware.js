@@ -1,7 +1,7 @@
 /*
 Ce middleware vérifie si l'utilisateur est authentifié avant de lui 
 permettre d'accéder à certaines routes protégées (par exemple, importer une API, tester un endpoint). 
-Il utilise des tokens JWT ou d’autres mécanismes de session pour vérifier l'identité de l'utilisateur.
+Il utilise des tokens JWT.
 */
 
 
