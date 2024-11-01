@@ -12,7 +12,7 @@ const cookieParser = require('cookie-parser');
 // Middlewares
 const corsMiddleware = require('./infrastructure/middlewares/corsMiddleware');
 const errorMiddleware = require('./infrastructure/middlewares/errorMiddleware');
-const requestLogger = require('./infrastructure/middlewares/requestLogger');
+//const requestLogger = require('./infrastructure/middlewares/requestLogger');
 
 // Import des routes
 const indexRouter = require('./interfaces/http/routes/index');
@@ -32,7 +32,7 @@ app.use(cookieParser()); // Parseur de cookies
 app.use(express.static(path.join(__dirname, 'public'))); // Fichiers statiques
 
 // Logger des requêtes (personnalisé)
-app.use(requestLogger);
+//app.use(requestLogger);
 
 // Gestion du CORS
 app.use(corsMiddleware);
