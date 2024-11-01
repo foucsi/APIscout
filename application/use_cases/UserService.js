@@ -1,5 +1,6 @@
 // src/application/use_cases/UserService.js
 const UserModel = require('../../infrastructure/database/models/UserModel');
+const UserRepository = require('../../infrastructure/repositories/UserRepository')
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid');
@@ -25,7 +26,7 @@ const createUser = async ({ username, email, password }) => {
   const hashedPassword = await bcrypt.hash(password, 10);
 
   // Créer un nouvel utilisateur
-  const user = new UserModel({
+  const user = await UserRepository.createUser({
     username,
     email,
     password: hashedPassword,
