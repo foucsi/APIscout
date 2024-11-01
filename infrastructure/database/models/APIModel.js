@@ -40,7 +40,7 @@ const APISchema = new mongoose.Schema({
     default: 'development'
   }
 }, {
-  timestamps: true // This will add createdAt and updatedAt fields automatically
+  timestamps: true 
 });
 
 
