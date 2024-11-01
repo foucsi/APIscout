@@ -2,6 +2,14 @@
 
 **API Scout** is a platform designed to automate API documentation, testing, and monitoring for developers. It centralizes the management of API schemas, tracks versions, and offers real-time monitoring, all in one place. API Scout aims to simplify the workflow of developers and teams by providing a comprehensive tool for managing APIs efficiently.
 
+## Project Structure
+
+- **`models/`**: Contains the Mongoose schemas for MongoDB.
+- **`repositories/`**: Handles data access logic, providing methods like `getAllUsers`.
+- **`use_cases/`**: Encapsulates business logic, calling repository functions and managing additional processing as needed.
+- **`controllers/`**: Manages HTTP requests and responses, interacting with the use cases to perform actions.
+
+
 ## Features
 
 - **Automated API Documentation**: Import your API schema (OpenAPI or Swagger) and generate interactive documentation automatically.

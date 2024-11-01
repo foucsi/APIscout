@@ -5,8 +5,12 @@ const createUser = async (userData) => {
     return UserModel.create(userData); // Insère un nouveau document utilisateur
   };
 
-const findAllUsers = async(userData)=>{
-  return UserModel.find(userData) // Récupére tous les Users de la db
+const findAllUsers = async()=>{
+  const users = await UserModel.find();
+  if (users.length === 0) {
+    throw new Error("Database empty");
+  }
+  return users;
 }
   
   module.exports = {

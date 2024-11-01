@@ -63,11 +63,7 @@ const authenticateUser = async (email, password) => {
 };
 
 const getAll = async()=>{
-  const users = await User.find()
-  if(users.length === 0){
-    throw new Error ("Database empty")
-  }
-  return users
+  return await UserRepository.findAllUsers()
 }
 
 module.exports = {
