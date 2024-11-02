@@ -42,4 +42,8 @@ const createApi = async({ name, description, version, baseUrl, owner, endpoints 
   return api;
 };
 
+const getAll = async()=>{
+  return await APIRepository.findAllAPI()
+}
+
 module.exports = createApi;
