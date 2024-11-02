@@ -2,6 +2,7 @@
 const APIModel = require('../../infrastructure/database/models/APIModel');
 const UserModel = require('../../infrastructure/database/models/UserModel');
 const EndpointModel = require("../../infrastructure/database/models/EndpointModel");
+const APIRepository = require('../../infrastructure/repositories/APIRepository')
 
 const createApi = async({ name, description, version, baseUrl, owner, endpoints }) => {
   // Vérifier si le nom de l'API est unique
@@ -27,7 +28,7 @@ const createApi = async({ name, description, version, baseUrl, owner, endpoints 
   }
 
   // Création de la nouvelle API
-  const api = new APIModel({
+  const api = new APIRepository.createAPI({
     name,
     description,
     version,
