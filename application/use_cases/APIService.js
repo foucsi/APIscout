@@ -46,4 +46,7 @@ const getAll = async()=>{
   return await APIRepository.findAllAPI()
 }
 
-module.exports = createApi;
+module.exports = {
+  createApi,
+  getAll
+};
