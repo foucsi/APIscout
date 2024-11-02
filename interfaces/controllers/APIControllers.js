@@ -33,7 +33,7 @@ exports.createAPI = async (req, res) => {
 
 exports.getAllAPIs = async (req, res) => {
   try {
-    const apis = await APIModel.find(); // Récupère toutes les APIs
+    const apis = await APIService.getAll() // Récupère toutes les APIs
     res.status(200).json(apis);
   } catch (error) {
     res.status(500).json({ message: error.message });
