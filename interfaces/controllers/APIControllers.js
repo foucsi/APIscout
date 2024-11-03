@@ -31,6 +31,7 @@ exports.createAPI = async (req, res) => {
   }
 };
 
+// controller getALLAPIS
 exports.getAllAPIs = async (req, res) => {
   try {
     const apis = await APIService.getAll() // Récupère toutes les APIs
