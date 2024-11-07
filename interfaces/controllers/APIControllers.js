@@ -1,7 +1,7 @@
 const APIService = require('../../application/use_cases/APIService')
 
 
-// controllers/APIController.js
+// controllers/APIController
 exports.createAPI = async (req, res) => {
   try {
     const { name, description, version, baseUrl, endpoints, isPublic, status } = req.body;
