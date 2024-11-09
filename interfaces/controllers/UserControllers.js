@@ -1,6 +1,7 @@
 const UserService = require('../../application/use_cases/UserService');
 
 // controllers/UserController.js
+// Get all Users
 exports.getAllUsers = async(req, res) => {
     try{
       const users = await UserService.getAll()
