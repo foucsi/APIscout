@@ -1,0 +1,1 @@
+//gère la mise en cache et la récupération de données depuis Redis
