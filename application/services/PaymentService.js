@@ -1,0 +1,1 @@
+//gère les interactions avec une API de paiement comme Stripe
