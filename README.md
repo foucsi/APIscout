@@ -28,46 +28,16 @@
 
 ### Installation
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/foucsi/api-scout.git
-Navigate to the project directory:
-bash
-Copier le code
-cd api-scout
-Install the dependencies:
-bash
-Copier le code
-npm install
-Running the Application
-Make sure MongoDB is running locally or provide the connection string for your cloud-based MongoDB instance.
-Start the development server:
-bash
-Copier le code
-npm run dev
-Access the platform in your browser at http://localhost:3000.
-API Documentation
-API Scout provides an automatically generated documentation for each imported API schema. You can access it directly through the platform's dashboard once your API schema is uploaded.
+# API Scout Setup Guide
 
-Contributing
-We welcome contributions! Feel free to open issues, submit feature requests, or create pull requests.
+## Prerequisites
 
-Fork the repository.
-Create a new branch:
-bash
-Copier le code
-git checkout -b feature-branch
-Commit your changes:
-bash
-Copier le code
-git commit -m 'Add new feature'
-Push to the branch:
-bash
-Copier le code
-git push origin feature-branch
-Open a pull request.
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
+- Ensure you have Node.js and MongoDB installed on your machine.
 
-Contact
-For questions or suggestions, please contact julienfoucart@proton.me.
+---
+
+## Installation
+
+### 1. Clone the repository:
+```bash
+git clone https://github.com/foucsi/api-scout.git
