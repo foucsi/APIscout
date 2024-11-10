@@ -1,0 +1,1 @@
+// gère les envois d'emails, les SMS, etc.
