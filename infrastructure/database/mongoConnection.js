@@ -1,20 +1,30 @@
 const mongoose = require("mongoose");
 const connectionString = process.env.CONNECTION_STRING;
 
-//connection to the database
-
-const connect = async()=>{
-    await mongoose.connect(connectionString, {connectTimeoutMS: 2000});
-    console.log("Successfully connected to the database: APIscout");
-}
-
-const connectDb = async ()=>{
-    try{
-        console.log("Connection progress...")
-        setTimeout(connect, 1000)
-    }catch(error){
-        console.error("Database connection failed. Retrying in 5 seconds...", error);
-        setTimeout(connectDb, 5000);
+const connectWithRetry = async (retries = 5, delay = 5000) => {
+    try {
+        console.log("Connecting to database...");
+        await mongoose.connect(connectionString, {
+            connectTimeoutMS: 5000,
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        console.log("Successfully connected to database: APIscout");
+    } catch (error) {
+        if (retries === 0) {
+            console.error("Max retries reached. Database connection failed:", error);
+            process.exit(1);
+        }
+        console.error(`Database connection failed. Retrying in ${delay/1000} seconds...`, error);
+        await new Promise(resolve => setTimeout(resolve, delay));
+        return connectWithRetry(retries - 1, delay);
     }
-}
-connectDb();
+};
+
+// Gestion des événements de connexion
+mongoose.connection.on('disconnected', () => {
+    console.log('Database disconnected');
+    connectWithRetry();
+});
+
+connectWithRetry();
