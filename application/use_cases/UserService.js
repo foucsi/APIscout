@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid');
 
-//Objectif : Contient la logique métier de création d’un utilisateur en utilisant Mongoose.
+//Objectif : Contient la logique métier de création d’un utilisateur.
 
 /*
   Ce que Nous Faisons :
