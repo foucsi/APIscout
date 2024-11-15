@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid');
 
-//Objectif : Contient la logique métier de création d’un utilisateur.
+//Logique metier
 
 /*
   Ce que Nous Faisons :
