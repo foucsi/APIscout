@@ -65,6 +65,8 @@ const getAll = async()=>{
   return await UserRepository.findAllUsers()
 }
 
+
+// exports
 module.exports = {
   authenticateUser,
   createUser,
