@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { v4: uuidv4 } = require('uuid');
 
-//Logique metier
+//Logique metier => good clean archi :)
 
 /*
   Ce que Nous Faisons :
