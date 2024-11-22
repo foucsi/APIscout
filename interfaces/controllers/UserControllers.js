@@ -47,7 +47,7 @@ exports.getAllUsers = async(req, res) => {
       // Récupération des données du corps de la requête
       const { username, email, password } = req.body;
       
-      // Appel du service pour créer un nouvel utilisateur
+      // Appel du service pour créer un nouvel user
       const newUser = await UserService.createUser({ username, email, password });
   
       // Réponse avec les informations de l'utilisateur créé (sans mot de passe)
