@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const connectionString = process.env.CONNECTION_STRING;
 
+//connection string ...
+
 const connectWithRetry = async (retries = 5, delay = 5000) => {
   try {
     console.log("Connecting to database...");
