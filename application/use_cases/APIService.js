@@ -1,20 +1,27 @@
 // src/application/use_cases/ApiService.js
-const APIModel = require('../../infrastructure/database/models/APIModel');
-const UserModel = require('../../infrastructure/database/models/UserModel');
+const APIModel = require("../../infrastructure/database/models/APIModel");
+const UserModel = require("../../infrastructure/database/models/UserModel");
 const EndpointModel = require("../../infrastructure/database/models/EndpointModel");
-const APIRepository = require('../../infrastructure/repositories/APIRepository')
+const APIRepository = require("../../infrastructure/repositories/APIRepository");
 
-const createApi = async({ name, description, version, baseUrl, owner, endpoints }) => {
-  // Vérifier si le nom de l'API est unique
+const createApi = async ({
+  name,
+  description,
+  version,
+  baseUrl,
+  owner,
+  endpoints,
+}) => {
+  // Vérifier si le nom de l'API est unique ??
   const existingAPI = await APIModel.findOne({ name });
   if (existingAPI) {
-    throw new Error('An API with this name already exists');
+    throw new Error("An API with this name already exists");
   }
 
   // Vérifier l'existence du propriétaire (owner)
   const ownerExist = await UserModel.findById(owner);
   if (!ownerExist) {
-    throw new Error('Owner not found');
+    throw new Error("Owner not found");
   }
 
   // Vérifier l'existence de chaque endpoint
@@ -42,11 +49,11 @@ const createApi = async({ name, description, version, baseUrl, owner, endpoints 
   return api;
 };
 
-const getAll = async()=>{
-  return await APIRepository.findAllAPI()
-}
+const getAll = async () => {
+  return await APIRepository.findAllAPI();
+};
 
 module.exports = {
   createApi,
-  getAll
+  getAll,
 };
