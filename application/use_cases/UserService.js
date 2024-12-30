@@ -1,11 +1,11 @@
 // src/application/use_cases/UserService.js
-const UserModel = require('../../infrastructure/database/models/UserModel');
-const UserRepository = require('../../infrastructure/repositories/UserRepository')
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const { v4: uuidv4 } = require('uuid');
+const UserModel = require("../../infrastructure/database/models/UserModel");
+const UserRepository = require("../../infrastructure/repositories/UserRepository");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const { v4: uuidv4 } = require("uuid");
 
-//Logique metier => good clean archi :)
+//logique metier ici !!!
 
 /*
   Ce que Nous Faisons :
@@ -18,7 +18,7 @@ const createUser = async ({ username, email, password }) => {
   // Vérifier si l'utilisateur existe déjà
   const existingUser = await UserModel.findOne({ email });
   if (existingUser) {
-    throw new Error('User with this email already exists');
+    throw new Error("User with this email already exists");
   }
 
   // Hachage du mot de passe
@@ -29,46 +29,43 @@ const createUser = async ({ username, email, password }) => {
     username,
     email,
     password: hashedPassword,
-    uniqueId:uuidv4()
+    uniqueId: uuidv4(),
   });
 
   await user.save();
   return user;
 };
 
-
-
 const authenticateUser = async (email, password) => {
   // Vérification de l'existence de l'utilisateur
   const user = await UserModel.findOne({ email });
   if (!user) {
-    throw new Error('Invalid email or password');
+    throw new Error("Invalid email or password");
   }
 
   // Vérification du mot de passe
   const isPasswordValid = await bcrypt.compare(password, user.password);
   if (!isPasswordValid) {
-    throw new Error('Invalid email or password');
+    throw new Error("Invalid email or password");
   }
 
   // Génération du token JWT
   const token = jwt.sign(
     { id: user._id, email: user.email },
     process.env.JWT_SECRET,
-    { expiresIn: '1h' }
+    { expiresIn: "1h" }
   );
 
   return { token, user };
 };
 
-const getAll = async()=>{
-  return await UserRepository.findAllUsers()
-}
-
+const getAll = async () => {
+  return await UserRepository.findAllUsers();
+};
 
 // exports
 module.exports = {
   authenticateUser,
   createUser,
-  getAll
+  getAll,
 };
