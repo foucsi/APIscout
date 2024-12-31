@@ -37,7 +37,7 @@ const createUser = async ({ username, email, password }) => {
 };
 
 const authenticateUser = async (email, password) => {
-  // Vérification de l'existence de l'utilisateur
+  // On verifie di le user existe
   const user = await UserModel.findOne({ email });
   if (!user) {
     throw new Error("Invalid email or password");
