@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { type } = require("os");
 //user schema model
 
 const userSchema = new mongoose.Schema(
@@ -10,6 +11,9 @@ const userSchema = new mongoose.Schema(
       trim: true,
       minlength: [3, "Username must be at least 3 characters"],
       maxlength: [30, "Username cannot exceed 30 characters"],
+    },
+    nickname: {
+      type: String,
     },
     email: {
       type: String,
